@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"com.kyle.clientTracker","l":"com.kyle.clientTracker"},{"m":"com.kyle.clientTracker","l":"com.kyle.clientTracker.controller"},{"m":"com.kyle.clientTracker","l":"com.kyle.clientTracker.model"}];updateSearchResults();
