@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" style="-fx-background-color: #222222;" stylesheets="@calculator.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kyle.clientTracker.controller.CalculatorController">
+   <children>
+      <GridPane layoutX="12.0" layoutY="14.0" prefHeight="400.0" prefWidth="577.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="375.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+          <RowConstraints minHeight="35.0" prefHeight="35.0" />
+          <RowConstraints minHeight="35.0" prefHeight="35.0" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox prefHeight="26.0" prefWidth="200.0" spacing="10.0" style="-fx-alignment: center;" GridPane.columnSpan="3" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="sportsbookLabel" prefHeight="26.0" prefWidth="135.0" promptText="Sportsbook" style="-fx-alignment: center;" />
+                  <TextField fx:id="stakeLabel" prefHeight="26.0" prefWidth="63.0" promptText="Stake" style="-fx-alignment: center;" />
+                  <DatePicker fx:id="calcDate" prefHeight="26.0" prefWidth="133.0" />
+                  <TextField fx:id="tagsLabel" promptText="Tags" style="-fx-alignment: center;" />
+                  <TextField fx:id="oddsLabel" onKeyTyped="#oddsChanged" prefHeight="26.0" prefWidth="71.0" promptText="Odds" style="-fx-alignment: center;" />
+               </children>
+            </HBox>
+            <Label fx:id="legWinPercentageLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="244.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="legTextField1" alignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField1" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField2" alignment="CENTER" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField2" alignment="CENTER" layoutX="402.0" layoutY="50.0" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField3" alignment="CENTER" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField3" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField4" alignment="CENTER" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField4" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField5" alignment="CENTER" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField5" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField6" alignment="CENTER" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField6" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField7" alignment="CENTER" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField7" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField8" alignment="CENTER" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField8" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField9" alignment="CENTER" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField9" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="legTextField10" alignment="CENTER" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oddsTextField10" alignment="CENTER" onKeyTyped="#oddsChanged" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="addBetButton" mnemonicParsing="false" onAction="#addBetButtonClicked" prefHeight="26.0" prefWidth="107.0" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="15.0" right="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="legWinPercentageLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel3" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel4" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel5" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel6" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel7" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel8" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel9" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="legWinPercentageLabel10" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-alignment: center;" GridPane.columnSpan="3" GridPane.rowIndex="14">
+               <children>
+                  <Label text="FK: " />
+                  <Label fx:id="fkLabel" prefWidth="75.0" />
+                  <Region prefHeight="35.0" prefWidth="20.0" />
+                  <Label text="TK" />
+                  <Label fx:id="tkLabel" prefWidth="75.0" />
+                  <Region prefHeight="200.0" prefWidth="20.0" />
+                  <Label text="QK: " />
+                  <Label fx:id="qkLabel" prefWidth="75.0" />
+                  <Region prefHeight="200.0" prefWidth="20.0" />
+                  <Label text="EV: " />
+                  <Label fx:id="evLabel" prefWidth="75.0" />
+               </children>
+            </HBox>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="453.0" text="Legs" textAlignment="CENTER" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="453.0" text="Odds" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="453.0" text="Win Percentage" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;" GridPane.rowIndex="13">
+               <children>
+                  <Label text="Fair Odds: " />
+                  <Label fx:id="fairOddsLabel" prefWidth="75.0" />
+                  <Region prefHeight="35.0" prefWidth="66.0" />
+                  <Label text="Win %: " />
+                  <Label fx:id="fullWinPercentageLabel" prefWidth="75.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="addBetLabel1" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="15.0" right="15.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+      <Button fx:id="closeButton" layoutX="512.0" layoutY="504.0" mnemonicParsing="false" onAction="#closeButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Close" />
+   </children>
+</AnchorPane>
