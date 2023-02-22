@@ -1655,6 +1655,7 @@ public class MainController implements Initializable {
         if (betId != -4) {
             newBet.setBetId(betId);
             allBets.add(newBet);
+            setSuccess("Successfully added pos-ev bet");
         }
         betTable.refresh();
 
