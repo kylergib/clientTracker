@@ -415,7 +415,7 @@ public class MainController implements Initializable {
                     } else if (status.equals("")){
                         comboBoxStatus.setItems(statusList);
 //
-                        comboBoxStatus.setValue(status);
+                        comboBoxStatus.setValue("pending");
                         setGraphic(comboBoxStatus);
                         setTextAlignment(TextAlignment.CENTER);
                     } else if (editRow == true && getIndex() == editRowIndex) {
@@ -547,6 +547,8 @@ public class MainController implements Initializable {
                         setText(null);
                     } else if (b.getStatus().equals("")){
                         setStyle("-fx-alignment: center");
+                        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+                        textFieldDate.setText(String.valueOf(currentTime.toLocalDateTime().toLocalDate()));
                         textFieldDate.setPromptText("yyyy-mm-dd");
                         setGraphic(textFieldDate);
                     } else if (editRow == true && getIndex() == editRowIndex) {
