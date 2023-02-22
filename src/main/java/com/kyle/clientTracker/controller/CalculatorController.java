@@ -332,6 +332,7 @@ public class CalculatorController implements Initializable {
      * clears all text from text fields
      */
     public void clearText() {
+
         legTextField1.setText("");
         legTextField2.setText("");
         legTextField3.setText("");
