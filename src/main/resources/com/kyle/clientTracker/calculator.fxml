@@ -233,13 +233,9 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="addBetLabel1" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="13">
-               <GridPane.margin>
-                  <Insets left="15.0" right="15.0" />
-               </GridPane.margin>
-            </Button>
          </children>
       </GridPane>
       <Button fx:id="closeButton" layoutX="512.0" layoutY="504.0" mnemonicParsing="false" onAction="#closeButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Close" />
+      <Label fx:id="errorLabel" layoutX="27.0" layoutY="509.0" prefHeight="19.0" prefWidth="474.0" />
    </children>
 </AnchorPane>

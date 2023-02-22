@@ -68,8 +68,8 @@ public class CalculatorController implements Initializable {
     public TextField oddsTextField10;
     public Label fairOddsLabel;
     public Label fullWinPercentageLabel;
-    public Button addBetLabel1;
     public Label evLabel;
+    public Label errorLabel;
     Map<String, TextField> oddLabels = new HashMap<>();
     Map<String, Label> percentLabels = new HashMap<>();
     Map<String, TextField> legTextFields = new HashMap<>();
@@ -92,6 +92,7 @@ public class CalculatorController implements Initializable {
                 newValue = LocalDate.of(Integer.valueOf(newText.split("/")[2]),Integer.valueOf(newText.split("/")[0]),Integer.valueOf(newText.split("/")[1]));
             } catch (DateTimeParseException e) {
                 System.out.println("second " + newText);
+                setError("Check date please");
                 // If the new text is not a valid date, ignore it
                 return;
             }
@@ -171,13 +172,13 @@ public class CalculatorController implements Initializable {
         try {
             stake = Double.valueOf(stakeLabel.getText());
         } catch (NumberFormatException e) {
-            System.out.println("Stake can only contain numbers");
+            setError("Stake can only contain numbers and cannot be blank");
             return;
         }
         try {
             date = Timestamp.valueOf(calcDate.getValue() + " 00:00:00");
         } catch (IllegalArgumentException e) {
-            System.out.println("Check date please");
+            setError("Check date please");
             return;
         }
 
@@ -185,7 +186,7 @@ public class CalculatorController implements Initializable {
         try {
             odds = Integer.parseInt(oddsLabel.getText());
         } catch (NumberFormatException e) {
-            System.out.println("Odds can only contain numbers");
+            setError("Odds can only contain numbers and cannot be blank");
             return;
         }
 
@@ -199,6 +200,7 @@ public class CalculatorController implements Initializable {
             newBet.setBetId(betId);
             allBets.add(newBet);
             clearText();
+            setSuccess("Bet added successfully");
         }
         //TODO: clear all text labels if bet added successfully
 
@@ -332,6 +334,7 @@ public class CalculatorController implements Initializable {
      * clears all text from text fields
      */
     public void clearText() {
+
         legTextField1.setText("");
         legTextField2.setText("");
         legTextField3.setText("");
@@ -373,5 +376,13 @@ public class CalculatorController implements Initializable {
         fairOddsLabel.setText("");
         fullWinPercentageLabel.setText("");
         evLabel.setText("");
+    }
+    public void setError(String message) {
+        errorLabel.setText(message);
+        errorLabel.setStyle("-fx-text-fill: #e06666");
+    }
+    public void setSuccess(String message) {
+        errorLabel.setText(message);
+        errorLabel.setStyle("-fx-text-fill: #55ff6b");
     }
 }
