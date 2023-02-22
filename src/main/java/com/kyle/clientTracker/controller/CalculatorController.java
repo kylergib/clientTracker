@@ -198,6 +198,7 @@ public class CalculatorController implements Initializable {
         if (betId != -4) {
             newBet.setBetId(betId);
             allBets.add(newBet);
+            clearText();
         }
         //TODO: clear all text labels if bet added successfully
 
@@ -326,5 +327,51 @@ public class CalculatorController implements Initializable {
             profit = (100.00 / Math.abs(odds) * stake);
         }
         return profit;
+    }
+    /**
+     * clears all text from text fields
+     */
+    public void clearText() {
+        legTextField1.setText("");
+        legTextField2.setText("");
+        legTextField3.setText("");
+        legTextField4.setText("");
+        legTextField5.setText("");
+        legTextField6.setText("");
+        legTextField8.setText("");
+        legTextField7.setText("");
+        legTextField9.setText("");
+        legTextField10.setText("");
+        stakeLabel.setText("");
+        tagsLabel.setText("");
+        oddsLabel.setText("");
+        oddsTextField1.setText("");
+        oddsTextField2.setText("");
+        oddsTextField3.setText("");
+        oddsTextField4.setText("");
+        oddsTextField5.setText("");
+        oddsTextField6.setText("");
+        oddsTextField7.setText("");
+        oddsTextField8.setText("");
+        oddsTextField9.setText("");
+        oddsTextField10.setText("");
+        sportsbookLabel.setText("");
+
+        legWinPercentageLabel1.setText("");
+        legWinPercentageLabel2.setText("");
+        legWinPercentageLabel3.setText("");
+        legWinPercentageLabel4.setText("");
+        legWinPercentageLabel5.setText("");
+        legWinPercentageLabel6.setText("");
+        legWinPercentageLabel7.setText("");
+        legWinPercentageLabel8.setText("");
+        legWinPercentageLabel9.setText("");
+        legWinPercentageLabel10.setText("");
+        fkLabel.setText("");
+        tkLabel.setText("");
+        qkLabel.setText("");
+        fairOddsLabel.setText("");
+        fullWinPercentageLabel.setText("");
+        evLabel.setText("");
     }
 }
