@@ -236,5 +236,6 @@
          </children>
       </GridPane>
       <Button fx:id="closeButton" layoutX="512.0" layoutY="504.0" mnemonicParsing="false" onAction="#closeButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Close" />
+      <Label fx:id="errorLabel" layoutX="27.0" layoutY="509.0" prefHeight="19.0" prefWidth="474.0" />
    </children>
 </AnchorPane>
