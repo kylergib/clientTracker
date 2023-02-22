@@ -474,5 +474,9 @@
          <Rectangle arcHeight="1.0" arcWidth="1.0" fill="#424242" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" GridPane.columnIndex="1" GridPane.rowSpan="4" />
         </children>
     </GridPane>
-   <Label fx:id="errorLabel" prefHeight="27.0" prefWidth="1042.0" />
+   <Label fx:id="errorLabel" prefHeight="27.0" prefWidth="1042.0">
+      <VBox.margin>
+         <Insets top="5.0" />
+      </VBox.margin>
+   </Label>
 </VBox>

@@ -337,6 +337,7 @@ public class MainController implements Initializable {
                                 editRowIndex = -4;
                                 editRow = false;
                                 betTable.refresh();
+                                sortBets();
 
                             });
                             //gets bet id and sends it to server to delete
