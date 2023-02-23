@@ -22,6 +22,9 @@
       <children>
          <TextField fx:id="searchTextField" focusTraversable="false" onKeyTyped="#searchTextFieldTyped" promptText="Type to search" />
       </children>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
    </HBox>
    <HBox prefHeight="101.0" prefWidth="1373.0" style="-fx-alignment: center;">
       <children>

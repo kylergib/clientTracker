@@ -68,33 +68,33 @@
 
 
 .combo-box .list-cell {
-    -fx-padding: 0.166667em 0.5em;
-    -fx-font-size: 1em;
+    -fx-padding: 0.166667em 0.5em!important;
+    -fx-font-size: 1em!important;
 }
 
 .combo-box .list-view {
-    -fx-background-color: #2e2e2e;
-    -fx-border-color: #585858;
-    -fx-border-radius: 5;
-    -fx-border-width: 1;
+    -fx-background-color: #2e2e2e!important;
+    -fx-border-color: #585858!important;
+    -fx-border-radius: 5!important;
+    -fx-border-width: 1!important;
 }
 
 .combo-box .list-view .list-cell {
-    -fx-background-color: #2e2e2e;
-    -fx-text-fill: white;
+    -fx-background-color: #2e2e2e!important;
+    -fx-text-fill: white!important;
 }
 
 .combo-box .arrow-button {
-    -fx-background-color: transparent;
-    -fx-background-insets: 0;
-    -fx-padding: 0.166667em 0.5em;
+    -fx-background-color: transparent!important;
+    -fx-background-insets: 0!important;
+    -fx-padding: 0.166667em 0.5em!important;
 }
 
 .combo-box .arrow {
-    -fx-background-color: transparent;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 100% 100%;
-    -fx-padding: 0;
+    -fx-background-color: transparent!important;
+    -fx-background-repeat: no-repeat!important;
+    -fx-background-size: 100% 100%!important;
+    -fx-padding: 0!important;
 }
 
 .button {
@@ -273,4 +273,31 @@
 }
 .grid-pane .small {
     -fx-font-size: 12px;
+}
+
+
+.list-cell {
+    -fx-padding: 0.166667em 0.5em!important;
+    -fx-font-size: 1em!important;
+}
+
+.list-view {
+    -fx-background-color: #2e2e2e!important;
+    -fx-border-color: #585858!important;
+    -fx-border-radius: 5!important;
+    -fx-border-width: 1!important;
+}
+
+.list-view .list-cell {
+    -fx-background-color: #2e2e2e !important;
+    -fx-text-fill: white !important;
+}
+.list-view .list-cell:hover {
+    -fx-background-color: white!important;
+    -fx-text-fill: black!important;
+}
+.arrow-button {
+    -fx-background-color: transparent!important;
+    -fx-background-insets: 0!important;
+    -fx-padding: 0.166667em 0.5em!important;
 }

@@ -7,6 +7,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -137,6 +140,9 @@ public class CalculatorController implements Initializable {
         legTextFields.put("legTextField9",legTextField9);
         legTextFields.put("legTextField10",legTextField10);
         isOpen = true;
+        AutoCompletionBinding<String> autoCompletionBinding = TextFields.bindAutoCompletion(sportsbookLabel,MainController.sportsbookList);
+
+        autoCompletionBinding.setPrefWidth(125);
 
     }
     /**

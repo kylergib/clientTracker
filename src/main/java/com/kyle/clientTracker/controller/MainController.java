@@ -5,10 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -32,6 +34,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.function.Predicate;
+
+import org.controlsfx.control.textfield.TextFields;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 
 
 import com.kami.lookout.Bet;
@@ -122,6 +127,8 @@ public class MainController implements Initializable {
     Map<Boolean, String> labelColors = new HashMap<>();
     Map<String, Integer> statusIndex = new HashMap<>();
     Map<String, Integer> monthToInteger = new HashMap<>();
+    public static List<String> sportsbookList = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -214,7 +221,26 @@ public class MainController implements Initializable {
         setBetTable(allBets);
         setAllTotalsGrid();
 
+        for (Bet bet: allBets) {
+            if (!sportsbookList.contains(bet.getSportsbook())) {
+                sportsbookList.add(bet.getSportsbook());
+                System.out.println("added: " + bet.getSportsbook());
+
+            }
+
+        }
+        System.out.println(sportsbookList);
+        AutoCompletionBinding<String> autoCompletionBinding = TextFields.bindAutoCompletion(textFieldSportsbook, sportsbookList);
+
+        autoCompletionBinding.setPrefWidth(97);
+
+
+
+
+
     }
+
+
     /**
      * sets bet table with all bets
      */
@@ -500,6 +526,7 @@ public class MainController implements Initializable {
                         setStyle("-fx-alignment: center");
                         System.out.println("EDITINGstatus");
                         setGraphic(textFieldSportsbook);
+
                     }  else {
                         final String status = b.getStatus();
                         final String sportsbook = b.getSportsbook();
