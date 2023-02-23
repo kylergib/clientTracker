@@ -5,10 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -32,6 +34,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.function.Predicate;
+
+import org.controlsfx.control.textfield.TextFields;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 
 
 import com.kami.lookout.Bet;
@@ -100,6 +105,7 @@ public class MainController implements Initializable {
     public Label alex_roiLabel;
     public Label posEv_roiLabel;
     public TextField searchTextField;
+    public Label errorLabel;
 
     private ComboBox comboBoxStatus = new ComboBox<>();
     private TextField textFieldSportsbook = new TextField();
@@ -121,6 +127,8 @@ public class MainController implements Initializable {
     Map<Boolean, String> labelColors = new HashMap<>();
     Map<String, Integer> statusIndex = new HashMap<>();
     Map<String, Integer> monthToInteger = new HashMap<>();
+    public static List<String> sportsbookList = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -213,7 +221,26 @@ public class MainController implements Initializable {
         setBetTable(allBets);
         setAllTotalsGrid();
 
+        for (Bet bet: allBets) {
+            if (!sportsbookList.contains(bet.getSportsbook())) {
+                sportsbookList.add(bet.getSportsbook());
+                System.out.println("added: " + bet.getSportsbook());
+
+            }
+
+        }
+        System.out.println(sportsbookList);
+        AutoCompletionBinding<String> autoCompletionBinding = TextFields.bindAutoCompletion(textFieldSportsbook, sportsbookList);
+
+        autoCompletionBinding.setPrefWidth(97);
+
+
+
+
+
     }
+
+
     /**
      * sets bet table with all bets
      */
@@ -240,7 +267,6 @@ public class MainController implements Initializable {
                         if (b.getStatus().equals("") || (editRow == true && editRowIndex == getIndex())) {
                             editButton.setText("Save");
                             editButton.setOnAction(event -> {
-                                //TODO: add error labels for logical checks prolly
 
                                 Timestamp date;
                                 int odds;
@@ -249,13 +275,13 @@ public class MainController implements Initializable {
                                 double freeBetStake = 0;
 
                                 if (sportsbook.equals("")) {
-                                    System.out.println("Sportsbook cannot be blank");
+                                    setError("Sportsbook cannot be blank");
                                     return;
                                 }
                                 try {
                                     date = Timestamp.valueOf(textFieldDate.getText() + " 00:00:00");
                                 } catch (IllegalArgumentException e) {
-                                    System.out.println("date could not be converted");
+                                    setError("Check Date");
                                     return;
                                 }
 
@@ -264,7 +290,7 @@ public class MainController implements Initializable {
                                 try {
                                     odds = Integer.valueOf(textFieldOdds.getText());
                                 } catch (NumberFormatException e) {
-                                    System.out.println("could not convert odds");
+                                    setError("Check odds.");
                                     return;
                                 }
 
@@ -284,14 +310,14 @@ public class MainController implements Initializable {
                                     }
                                 }
                                 if ((stake == 0.0) && (freeBetStake == 0.0)) {
-                                    System.out.println("money stake and free bet stake cannot both be blank or 0");
+                                    setError("money stake and free bet stake cannot both be blank or 0");
                                     return;
                                 }
 
 
                                 String status = String.valueOf(comboBoxStatus.getValue());
                                 if (status.equals("")) {
-                                    System.out.println("Status cannot be blank");
+                                    setError("Status cannot be blank");
                                     return;
                                 }
                                 //TODO: calc profit
@@ -311,18 +337,17 @@ public class MainController implements Initializable {
 
                                 try {
                                     if (b.getBetId() > 0) {
-                                        System.out.println(b.getBetId() + " above 0");
                                         int updateBet = client.updateBet(b);
                                         if (updateBet == b.getBetId()) {
-                                            System.out.println("Bet updated succesfully.");
+                                            setSuccess("Bet updated successfully.");
                                             sortBets();
                                         }
                                     } else {
-                                        System.out.println(b.getBetId() + " below 0");
                                         int betId = client.addBet(b);
                                         if (betId != -4) {
                                             b.setBetId(betId);
                                             sortBets();
+                                            setSuccess("Bet added successfully");
                                         }
                                     }
 
@@ -338,8 +363,8 @@ public class MainController implements Initializable {
                                 editRowIndex = -4;
                                 editRow = false;
                                 betTable.refresh();
+                                sortBets();
 
-                                //TODO: add insert with client to database
                             });
                             //gets bet id and sends it to server to delete
                             deleteButton.setText("Cancel");
@@ -349,8 +374,6 @@ public class MainController implements Initializable {
                                     editRowIndex = -4;
                                     betTable.refresh();
                                 } else {
-
-                                    System.out.println("Cancel");
                                     canAddNewBet = true;
                                     allBets.remove(b);
                                     setAllTotalsGrid();
@@ -359,7 +382,6 @@ public class MainController implements Initializable {
                         } else {
                             editButton.setOnAction(event -> {
                                 if (canAddNewBet == true || editRow == true) {
-                                    System.out.println("edit" + b.getBetId());
                                     editRow = true;
                                     editRowIndex = getIndex();
                                     betTable.refresh();
@@ -377,11 +399,11 @@ public class MainController implements Initializable {
                                     if (response.equals("Deleted " + b.getBetId())) {
                                         allBets.remove(b);
                                         setAllTotalsGrid();
-                                        System.out.println("Deleted " + b.getBetId());
+                                        setError("Deleted successfully");
                                     } else if (response.equals("Could not delete bet: lost connection to server")) {
-                                        System.out.println("server disconnected");
+                                        setError("Disconnected from server. Please try restarting app.");
                                     } else {
-                                        System.out.println("Could not delete");
+                                        setError("Could not delete");
                                     }
 
                                 } catch (IOException e) {
@@ -420,7 +442,7 @@ public class MainController implements Initializable {
                     } else if (status.equals("")){
                         comboBoxStatus.setItems(statusList);
 //
-                        comboBoxStatus.setValue(status);
+                        comboBoxStatus.setValue("pending");
                         setGraphic(comboBoxStatus);
                         setTextAlignment(TextAlignment.CENTER);
                     } else if (editRow == true && getIndex() == editRowIndex) {
@@ -504,6 +526,7 @@ public class MainController implements Initializable {
                         setStyle("-fx-alignment: center");
                         System.out.println("EDITINGstatus");
                         setGraphic(textFieldSportsbook);
+
                     }  else {
                         final String status = b.getStatus();
                         final String sportsbook = b.getSportsbook();
@@ -552,6 +575,8 @@ public class MainController implements Initializable {
                         setText(null);
                     } else if (b.getStatus().equals("")){
                         setStyle("-fx-alignment: center");
+                        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+                        textFieldDate.setText(String.valueOf(currentTime.toLocalDateTime().toLocalDate()));
                         textFieldDate.setPromptText("yyyy-mm-dd");
                         setGraphic(textFieldDate);
                     } else if (editRow == true && getIndex() == editRowIndex) {
@@ -1657,6 +1682,7 @@ public class MainController implements Initializable {
         if (betId != -4) {
             newBet.setBetId(betId);
             allBets.add(newBet);
+            setSuccess("Successfully added pos-ev bet");
         }
         betTable.refresh();
 
@@ -1734,5 +1760,13 @@ public class MainController implements Initializable {
             Method method = this.getClass().getMethod(currentFilter);
             method.invoke(this);
         }
+    }
+    public void setError(String message) {
+        errorLabel.setText(message);
+        errorLabel.setStyle("-fx-text-fill: #e06666");
+    }
+    public void setSuccess(String message) {
+        errorLabel.setText(message);
+        errorLabel.setStyle("-fx-text-fill: #55ff6b");
     }
 }

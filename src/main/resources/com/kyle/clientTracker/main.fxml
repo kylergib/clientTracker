@@ -18,10 +18,13 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center-right;">
+   <HBox prefHeight="29.0" prefWidth="1240.0" style="-fx-alignment: center-right;">
       <children>
          <TextField fx:id="searchTextField" focusTraversable="false" onKeyTyped="#searchTextFieldTyped" promptText="Type to search" />
       </children>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
    </HBox>
    <HBox prefHeight="101.0" prefWidth="1373.0" style="-fx-alignment: center;">
       <children>
@@ -474,4 +477,9 @@
          <Rectangle arcHeight="1.0" arcWidth="1.0" fill="#424242" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" GridPane.columnIndex="1" GridPane.rowSpan="4" />
         </children>
     </GridPane>
+   <Label fx:id="errorLabel" prefHeight="27.0" prefWidth="1042.0">
+      <VBox.margin>
+         <Insets top="5.0" />
+      </VBox.margin>
+   </Label>
 </VBox>

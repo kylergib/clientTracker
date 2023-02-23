@@ -4,6 +4,7 @@ module com.kyle.clientTracker {
     requires java.sql;
     requires kami.lookout;
     requires java.datatransfer;
+    requires org.controlsfx.controls;
 
 
     opens com.kyle.clientTracker to javafx.fxml;
