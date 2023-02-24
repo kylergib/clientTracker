@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,6 +45,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import static com.kyle.clientTracker.Main.client;
+import static com.kyle.clientTracker.Main.stage;
 
 /**
  * controller for main window on startup
@@ -257,6 +259,7 @@ public class MainController implements Initializable {
                     if (empty) {
                         setGraphic(null);
                     } else {
+
                         Bet b=getTableView().getItems().get(getIndex());
                         // Create a horizontal box layout
                         HBox hBox = new HBox();
@@ -267,7 +270,7 @@ public class MainController implements Initializable {
                         if (b.getStatus().equals("") || (editRow == true && editRowIndex == getIndex())) {
                             editButton.setText("Save");
                             editButton.setOnAction(event -> {
-
+                                System.out.println("STARTING SAVE");
                                 Timestamp date;
                                 int odds;
                                 String sportsbook = textFieldSportsbook.getText();
@@ -320,7 +323,10 @@ public class MainController implements Initializable {
                                     setError("Status cannot be blank");
                                     return;
                                 }
-                                //TODO: calc profit
+
+
+
+
                                 String tags = textFieldTags.getText();
 
                                 b.setSportsbook(sportsbook);
@@ -338,14 +344,17 @@ public class MainController implements Initializable {
                                 try {
                                     if (b.getBetId() > 0) {
                                         int updateBet = client.updateBet(b);
-                                        if (updateBet == b.getBetId()) {
+                                        if (updateBet == 1) {
                                             setSuccess("Bet updated successfully.");
                                             sortBets();
+                                        } else {
+                                            setError("Bet not updated successfully.");
                                         }
                                     } else {
                                         int betId = client.addBet(b);
                                         if (betId != -4) {
                                             b.setBetId(betId);
+                                            betTable.refresh();
                                             sortBets();
                                             setSuccess("Bet added successfully");
                                         }
@@ -382,6 +391,7 @@ public class MainController implements Initializable {
                         } else {
                             editButton.setOnAction(event -> {
                                 if (canAddNewBet == true || editRow == true) {
+                                    betTable.refresh();
                                     editRow = true;
                                     editRowIndex = getIndex();
                                     betTable.refresh();
@@ -1768,5 +1778,13 @@ public class MainController implements Initializable {
     public void setSuccess(String message) {
         errorLabel.setText(message);
         errorLabel.setStyle("-fx-text-fill: #55ff6b");
+    }
+
+    public void settingsButtonClicked() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("preferences.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
+        stage.setScene(scene);
+
     }
 }
