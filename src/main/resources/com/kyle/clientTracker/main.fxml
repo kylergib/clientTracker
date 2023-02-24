@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -20,6 +21,8 @@
     </padding>
    <HBox prefHeight="29.0" prefWidth="1240.0" style="-fx-alignment: center-right;">
       <children>
+         <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="25.0" prefWidth="71.0" text="Settings" />
+         <Region prefHeight="25.0" prefWidth="1019.0" />
          <TextField fx:id="searchTextField" focusTraversable="false" onKeyTyped="#searchTextFieldTyped" promptText="Type to search" />
       </children>
       <VBox.margin>

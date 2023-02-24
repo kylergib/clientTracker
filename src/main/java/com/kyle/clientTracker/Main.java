@@ -14,12 +14,14 @@ import java.net.URL;
 
 public class Main extends Application {
     public static Client client;
+    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        this.stage = stage;
         Config.setProps();
-        client = new Client(Config.getServerUrl(), Config.getServerPort());
+//        client = new Client(Config.getServerUrl(), Config.getServerPort());
+        client = new Client("localhost", Config.getServerPort());
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
@@ -33,6 +35,9 @@ public class Main extends Application {
         stage.setTitle("Bet Tracker");
         stage.setScene(scene);
         stage.show();
+
+
+
     }
 
     public static void main(String[] args) {

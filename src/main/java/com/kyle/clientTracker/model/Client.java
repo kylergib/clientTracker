@@ -81,6 +81,9 @@ public class Client {
             if (sslSocket != null && sslSocket.isConnected()) {
                 out.writeObject("getBets");
                 Object obj = in.readObject();
+                out.flush();
+                out.reset();
+
 
 
                 if (obj.getClass().equals(ArrayList.class)) {
@@ -92,12 +95,14 @@ public class Client {
                 List<Bet> newList = new ArrayList<>();
                 return newList;
             }
+
         } catch (SocketException e) {
             System.out.println("Socket exception");
             List<Bet> newList = new ArrayList<>();
             connected = false;
             return newList;
         }
+
     }
     /**
      * attempts to delete a bet
@@ -110,6 +115,7 @@ public class Client {
             sendList.add(betId);
             out.writeObject(sendList);
             out.flush();
+            out.reset();
 
             Object inObj = in.readObject();
             if (inObj.getClass() == String.class) {
@@ -135,6 +141,7 @@ public class Client {
             sendList.add(bet);
             out.writeObject(sendList);
             out.flush();
+            out.reset();
 
             Object inObj = in.readObject();
             if (inObj.getClass() == Integer.class) {
@@ -156,9 +163,11 @@ public class Client {
         try {
             List<Object> sendList = new ArrayList<>();
             sendList.add("updateBet");
+            sendList.add(null);
             sendList.add(bet);
             out.writeObject(sendList);
             out.flush();
+            out.reset();
 
             Object inObj = in.readObject();
             if (inObj.getClass() == Integer.class) {
