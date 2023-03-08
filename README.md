@@ -19,5 +19,7 @@ Bet Tracker to be combined with bet server
 - QK is Quad Kelly
 - EV is Expected Value
 - Also calculates what the parlay odds should be if put in multiple odds in the text boxes. 
-- Add button saves the bet.
+- Add button saves the bet
+
+
 ![Screenshot 2023-03-07 at 9 09 58 PM](https://user-images.githubusercontent.com/48994502/223601338-1f9a114d-5e8f-4e23-abff-bd1e6b615520.png)
